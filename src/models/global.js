@@ -1,10 +1,11 @@
 import { queryNotices } from '@/services/api';
+import { mobileQuery } from '@/layouts/BasicLayout';
 
 export default {
   namespace: 'global',
 
   state: {
-    collapsed: false,
+    collapsed: window.matchMedia(mobileQuery).matches, // true if mobile
     notices: [],
     loadedAllNotices: false,
   },
