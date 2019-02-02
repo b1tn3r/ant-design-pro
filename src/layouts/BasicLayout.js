@@ -26,6 +26,8 @@ const SettingDrawer = React.lazy(() => import('@/components/SettingDrawer'));
 
 const { Content } = Layout;
 
+export const mobileQuery = "(max-width: 599px)";
+
 const query = {
   'screen-xs': {
     maxWidth: 575,
@@ -73,15 +75,6 @@ class BasicLayout extends React.Component {
       type: 'menu/getMenuData',
       payload: { routes, authority },
     });
-  }
-
-  componentDidUpdate(preProps) {
-    // After changing to phone mode,
-    // if collapsed is true, you need to click twice to display
-    const { collapsed, isMobile } = this.props;
-    if (isMobile && !preProps.isMobile && !collapsed) {
-      this.handleMenuCollapse(false);
-    }
   }
 
   getContext() {
@@ -230,7 +223,7 @@ export default connect(({ global, setting, menu: menuModel }) => ({
   breadcrumbNameMap: menuModel.breadcrumbNameMap,
   ...setting,
 }))(props => (
-  <Media query="(max-width: 599px)">
+  <Media query={mobileQuery}>
     {isMobile => <BasicLayout {...props} isMobile={isMobile} />}
   </Media>
 ));
