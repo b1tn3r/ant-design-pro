@@ -25,10 +25,7 @@ export default class SiderMenu extends PureComponent {
 
   static getDerivedStateFromProps(props, state) {
     const { pathname, flatMenuKeysLen } = state;
-    if (
-      props.location.pathname !== pathname ||
-      props.flatMenuKeys.length !== flatMenuKeysLen
-    ) {
+    if (props.location.pathname !== pathname || props.flatMenuKeys.length !== flatMenuKeysLen) {
       return {
         pathname: props.location.pathname,
         flatMenuKeysLen: props.flatMenuKeys.length,
@@ -70,7 +67,7 @@ export default class SiderMenu extends PureComponent {
         collapsible
         collapsed={collapsed}
         breakpoint="lg"
-        onCollapse={(collapse) => {
+        onCollapse={collapse => {
           if (firstMount || !isMobile) {
             onCollapse(collapse);
           }
