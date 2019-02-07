@@ -112,7 +112,7 @@ export default class HeaderSearch extends PureComponent {
     });
     return (
       <span
-        className={classNames(className, styles.headerSearch)}
+        className={classNames(className, styles.headerSearch, searchMode && styles.noFocus)}
         onClick={this.enterSearchMode}
         onTransitionEnd={({ propertyName }) => {
           if (propertyName === 'width' && !searchMode) {
